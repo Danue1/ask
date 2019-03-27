@@ -1,22 +1,26 @@
 {
   "name": "ask",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.11",
-    "@types/node": "11.12.0",
-    "@types/react": "16.8.8",
-    "@types/react-dom": "16.8.3",
-    "react": "^16.8.5",
-    "react-dom": "^16.8.5",
-    "react-scripts": "2.1.8",
-    "typescript": "3.3.4000"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "react-scripts": "2.1.8",
+    "styled-components": "^4.2.0",
+    "typescript": "3.3.4000"
+  },
+  "devDependencies": {
+    "@types/node": "11.12.0",
+    "@types/react": "16.8.8",
+    "@types/react-dom": "16.8.3",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^8.0.1",
+    "tslint-react": "^4.0.0"
   },
   "eslintConfig": {
     "extends": "react-app"
