@@ -3,8 +3,14 @@ import styled from 'styled-components'
 import { Icon } from '../../../Components/Icon'
 
 const Container = styled.div`
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  width: 100vw;
+  height: 3.5rem;
+
+  background-color: white;
   border-bottom: 1px solid hsl(0 0% 84%);
 `
 

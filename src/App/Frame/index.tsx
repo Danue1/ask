@@ -2,27 +2,15 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Header } from './Header'
 
-const Layout = styled.div`
-  display: grid;
-  grid-template:
-    'Header' 3.5rem
-    'Main' calc(100vh - 3.5rem)
-    / 100vw;
-`
+const Main = styled.main`
+  height: 100vh;
 
-const HeaderItem = styled.header`
-  grid-area: Header;
-`
-
-const MainItem = styled.main`
-  grid-area: Main;
+  padding-top: 3.5rem;
 `
 
 export const Frame: FC = ({ children }) => (
-  <Layout>
-    <HeaderItem>
-      <Header />
-    </HeaderItem>
-    <MainItem>{children}</MainItem>
-  </Layout>
+  <>
+    <Header />
+    <Main>{children}</Main>
+  </>
 )
