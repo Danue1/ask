@@ -17,6 +17,8 @@ const Label = styled.div`
   align-items: center;
 
   width: min-content;
+
+  margin-left: 0.5rem;
 `
 
 const Name = styled.div`

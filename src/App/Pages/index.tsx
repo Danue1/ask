@@ -3,7 +3,7 @@ import { Switch, Route, Redirect } from 'react-router'
 import styled from 'styled-components'
 
 const Layout = styled.div`
-  max-width: 64rem;
+  max-width: 64.5rem;
   width: 100%;
 
   margin: 0 auto;

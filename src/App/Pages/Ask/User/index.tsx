@@ -12,6 +12,10 @@ const Layout = styled.div`
   background-color: white;
 `
 
+const Image = styled.img`
+  width: 100%;
+`
+
 const Name = styled.div`
   font-size: 1.5rem;
 `
@@ -33,10 +37,11 @@ const QuestionCount = styled.div``
 const AnswerCount = styled.div``
 
 export const User: FC = () => {
-  const { mentionId, name, profile, questionCount, answerCount } = useAsk()
+  const { mentionId, name, profile, profileImage, questionCount, answerCount } = useAsk()
 
   return (
     <Layout>
+      <Image src={profileImage} />
       <Name>{name}</Name>
       <MentionId>
         <At />
