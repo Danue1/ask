@@ -19,7 +19,7 @@ export const Clearfix = createGlobalStyle`
     min-height: 32rem;
 
     font-size: 16px;
-    background-color: hsl(0 0% 96%);
+    background-color: hsl(0 0% 92%);
   }
 
   html,
@@ -72,13 +72,14 @@ export const Clearfix = createGlobalStyle`
   }
 
   input,
+  textarea,
   button {
+    resize: none;
+    font-size: 1rem;
+    background-color: transparent;
     border: 0;
     border-radius: 0;
     outline: 0;
-    background-color: transparent;
-
-    font-size: 1rem;
   }
 
   input,
@@ -86,8 +87,7 @@ export const Clearfix = createGlobalStyle`
     width: 100%;
     height: 100%;
 
-    padding: 0.5rem;
-
     outline: none;
+    color: currentColor;
   }
 `

@@ -5,7 +5,7 @@ import { Header } from './Header'
 const Main = styled.main`
   height: 100vh;
 
-  padding-top: 3.5rem;
+  padding-top: 3rem;
 `
 
 export const Frame: FC = ({ children }) => (
