@@ -15,9 +15,6 @@ export const Clearfix = createGlobalStyle`
     overflow-x: auto;
     overflow-y: hidden;
 
-    min-width: 64rem;
-    min-height: 32rem;
-
     font-size: 16px;
     background-color: hsl(0 0% 92%);
   }
