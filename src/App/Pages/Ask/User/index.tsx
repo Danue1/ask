@@ -24,7 +24,9 @@ const MentionId = styled.div`
   color: hsl(0 0% 36%);
 `
 
-const Profile = styled.div``
+const Profile = styled.div`
+  margin: 0.5rem 0;
+`
 
 const QuestionCount = styled.div``
 

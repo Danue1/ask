@@ -40,15 +40,23 @@ const Textarea = styled.textarea`
 
 const Container = styled.div`
   display: grid;
-  grid-auto-flow: column;
   grid-gap: 0.5rem;
-  justify-content: flex-end;
-  align-items: center;
+  align-items: flex-end;
+  grid-template-columns: 1fr 8ch;
+`
+
+const Side = styled.div`
+  display: grid;
+  grid-gap: 0.5rem;
+  align-items: flex-end;
 `
 
 const Counter = styled.div`
   display: grid;
   grid-auto-flow: column;
+  justify-content: flex-end;
+
+  margin-right: 0.5rem;
 `
 
 const TextLength = styled.div``
@@ -63,6 +71,7 @@ const Submit = styled.div`
   padding: 0.5rem;
 
   border: 1px solid hsl(0 0% 84%);
+  border-radius: 0.25rem;
 `
 
 export const QuestionInput: FC = () => {
@@ -72,8 +81,17 @@ export const QuestionInput: FC = () => {
 
   const [textLength, setTextLength] = useState<number>(0)
 
+  const MAX_LENGTH = 255
+
   const updateTextLength = () => {
-    setTextLength(ref.current!.value.length)
+    const element = ref.current!
+    const textLength = element.value.length
+    if (textLength > MAX_LENGTH) {
+      element.value = element.value.slice(0, MAX_LENGTH)
+      setTextLength(MAX_LENGTH)
+    } else {
+      setTextLength(textLength)
+    }
   }
 
   const submitQuestion = () => {
@@ -92,13 +110,15 @@ export const QuestionInput: FC = () => {
         <Name>{name}</Name>
         <Text>님에게 질문하기</Text>
       </Label>
-      <Textarea rows={3} ref={ref} onChange={updateTextLength} placeholder="무슨 일이 일어나고 있나요?" />
       <Container>
-        <Counter>
-          <TextLength>{textLength}</TextLength>
-          <Limit>/200</Limit>
-        </Counter>
-        <Submit onClick={submitQuestion}>보내기</Submit>
+        <Textarea rows={3} ref={ref} onChange={updateTextLength} placeholder="무슨 일이 일어나고 있나요?" />
+        <Side>
+          <Counter>
+            <TextLength>{textLength}</TextLength>
+            <Limit>/{MAX_LENGTH}</Limit>
+          </Counter>
+          <Submit onClick={submitQuestion}>보내기</Submit>
+        </Side>
       </Container>
     </Layout>
   )
