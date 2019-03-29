@@ -1,4 +1,6 @@
 import React, { FC, createContext, useContext, useMemo, useEffect, useState } from 'react'
+import { requestToGet } from '../../../../functions/request'
+import { configs } from '../../../../configs'
 
 type Context = State & Dispatch
 
@@ -28,8 +30,7 @@ export const AskProvider: FC<Props> = ({ mentionId, children }) => {
 
   const updateUser = () => {
     if (process.env.NODE_ENV === 'production') {
-      const proxyUrl = `https://lzp2g5v9a9.execute-api.ap-northeast-2.amazonaws.com/production/${mentionId}`
-      fetch(proxyUrl, { mode: 'cors' })
+      requestToGet(`/${mentionId}`)
         .then(value => value.text())
         .then(profileImage => {
           setProfileImage(profileImage)
@@ -39,7 +40,7 @@ export const AskProvider: FC<Props> = ({ mentionId, children }) => {
           setAnswerCount(0)
         })
     } else {
-      setProfileImage('https://pbs.twimg.com/profile_images/1093519811466866689/3jjO2o91.jpg')
+      setProfileImage(configs.ProfileImageUrl)
       setName('다뉴엘')
       setProfile('profile')
       setQuestionCount(0)

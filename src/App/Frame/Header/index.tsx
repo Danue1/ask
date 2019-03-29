@@ -1,8 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, lazy, Suspense } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { SearchMentionId } from './SearchMentionId'
 import { Logo } from '../../../Components/Icon/Logo'
+import { useModal } from '../../../Components/Modal/hooks/useModal'
+import { Modal } from '../../../Components/Modal'
 
 const Container = styled.div`
   position: fixed;
@@ -32,11 +34,9 @@ const Layout = styled.div`
 
 const Left = styled.div`
   grid-area: Left;
-`
-
-const Right = styled.div`
-  grid-area: Right;
   display: grid;
+  grid-gap: 0.5rem;
+  grid-auto-flow: column;
   align-items: center;
 `
 
@@ -44,17 +44,43 @@ const Anchor = styled(Link)`
   height: 3rem;
 `
 
-export const Header: FC = () => (
-  <Container>
-    <Layout>
-      <Left>
-        <Anchor to="/">
-          <Logo />
-        </Anchor>
-      </Left>
-      <Right>
-        <SearchMentionId />
-      </Right>
-    </Layout>
-  </Container>
-)
+const Right = styled.div`
+  grid-area: Right;
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-auto-flow: column;
+  align-items: center;
+`
+
+const Button = styled.div`
+  cursor: pointer;
+
+  padding: 0.5rem;
+`
+
+const LoginToAdmin = lazy(() => import('./LoginToAdmin').then(({ LoginToAdmin }) => ({ default: LoginToAdmin })))
+
+export const Header: FC = () => {
+  const adminModal = useModal()
+
+  return (
+    <Container>
+      <Layout>
+        <Left>
+          <Anchor to="/">
+            <Logo />
+          </Anchor>
+        </Left>
+        <Right>
+          <SearchMentionId />
+          <Button onClick={adminModal.open}>로그인</Button>
+          <Modal isOpen={adminModal.state}>
+            <Suspense fallback={null}>
+              <LoginToAdmin closeModal={adminModal.close} />
+            </Suspense>
+          </Modal>
+        </Right>
+      </Layout>
+    </Container>
+  )
+}

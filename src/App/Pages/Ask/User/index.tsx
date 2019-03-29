@@ -5,15 +5,23 @@ import { At } from '../../../../Components/Icon/At'
 
 const Layout = styled.div`
   display: grid;
-  grid-gap: 0.25rem;
+  grid-gap: 1rem;
 
   padding: 1rem;
 
   background-color: white;
 `
 
+const Item = styled.div`
+  display: grid;
+  grid-gap: 0.25rem;
+`
+
 const Image = styled.img`
   width: 100%;
+
+  border: 1px solid hsl(0 0% 84%);
+  border-radius: 0.25rem;
 `
 
 const Name = styled.div`
@@ -28,9 +36,7 @@ const MentionId = styled.div`
   color: hsl(0 0% 36%);
 `
 
-const Profile = styled.div`
-  margin: 0.5rem 0;
-`
+const Profile = styled.div``
 
 const QuestionCount = styled.div``
 
@@ -42,14 +48,18 @@ export const User: FC = () => {
   return (
     <Layout>
       <Image src={profileImage} />
-      <Name>{name}</Name>
-      <MentionId>
-        <At />
-        {mentionId}
-      </MentionId>
+      <Item>
+        <Name>{name}</Name>
+        <MentionId>
+          <At />
+          {mentionId}
+        </MentionId>
+      </Item>
       <Profile>{profile}</Profile>
-      <QuestionCount>받은 질문 {questionCount}개</QuestionCount>
-      <AnswerCount>답변 {answerCount}개</AnswerCount>
+      <Item>
+        <QuestionCount>받은 질문 {questionCount}개</QuestionCount>
+        <AnswerCount>답변 {answerCount}개</AnswerCount>
+      </Item>
     </Layout>
   )
 }
